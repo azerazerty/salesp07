@@ -15,7 +15,12 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
+      - name: Debug token
+        run: |
+          echo "Token length: ${#GITHUB_TOKEN}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.SNAKE_TOKEN }}
+          
       - name: Generate the snake files in './dist/'
         uses: Platane/snk@v3
         id: snake-gif
@@ -25,12 +30,6 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
             dist/github-contribution-grid-snake.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
-        env:
-          GITHUB_TOKEN: ${{ secrets.SNAKE_TOKEN }}
-
-      - name: Debug token
-        run: |
-          echo "Token length: ${#GITHUB_TOKEN}"
         env:
           GITHUB_TOKEN: ${{ secrets.SNAKE_TOKEN }}
 
