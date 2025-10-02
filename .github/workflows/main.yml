@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "0 0 * * *"   # runs once a day at midnight
   workflow_dispatch:       # allow manual trigger
+  push:
+    branches:
+      - main               # also run whenever you push to main
 
 jobs:
   build:
